@@ -1,6 +1,8 @@
 # Veronica uplift BGB analyses protocols
 
-Done externally: phylogeny (StarBEAST2 on CIPRES), band assignment (done manually based on floras and expert opinion), and TTR runs (Matt Larcombe)
+Scripts and data for analysis in Multiple origins of mountain diversity in New Zealand's largest plant radiation (in review)
+
+Done externally: phylogeny (StarBEAST2 on CIPRES), band assignment (curated manually based on floras and expert opinion), and TTR runs (Matt Larcombe)
 
 Bold scripts (.R) are sequential steps in a pipeline (or sourced by these scripts); some were run on departmental cluster, others on local machine, so filepaths may vary
 
@@ -137,4 +139,38 @@ see uplift_biogeo_ms_plots.R
 
 ## util
 tree plotting functions
+
+# Data
+
+- Trees
+  - Sortadate50_tree.tre: full MCC tree
+  - Sortadate50_TTRtips.tre: pruned to species with enough records for TTR SDM
+  - Sortadate50_100trees.nex and sortadate50_100trees_bgb.tre: 100 randomly selected trees from posterior distribution
+- Biogeobears
+  - Versions
+    - Sortadate50_ASL: three habitats, alpine, subalpine, lowland
+    - Sortadate50_merged: two habitats: mountain (alpine and subalpine merged) and lowland
+    - TTRtips: version pruned to species with enough records for TTR SDM)
+  - Input files explained in BioGeoBears documentation
+    - Areas_allowed.txt
+    - Band_summary_expert_reduced.txt (habitat assignments)
+    - Manual_dispersal_multipliers.txt
+    - Time_periods.txt (when mountains/alpine became available)
+  - Output files
+    - Model fit for MCC tree: Veronica_BAYAREALIKE<>.Rdata or Veronica_DEC<>.Rdata
+    - BSMs for MCC tree: RES_ana_events_tables.Rdata, RES_clado_events_tables.Rdata
+    - Binning output for 100 posterior trees: sortadate50_<>_binned_output_multi.Rdata
+- TTR
+  - Veronica_TTR_fit_files.zip: output of TTR SDM for each species
+  - Predict_grids_TTR.zip: niche projections from TTR model fits
+  - Veronica_sdm_stats_corrected.csv: TTR niche parameters, both relative and absolute scales
+    - TTR.traits.nex: version for time slice
+    - TTR22_eigenvector_loadings_filtered_ranked.csv: full ranking of TTR niche params for dimensionality reduction
+    - TTR9_traits_bands_back.csv: top 9 traits used in analysis, joined with habitat data and including both relative and absolute scales
+- Distribution_data
+  - Veroncia_gbif_eflora_lucs_stricterClean.csv: input occurrence data for TTR SDM
+  - alt_lat_bands.csv: important summary table with categories for various analyses 
+- time_slice
+  - output from time slice analysis used in uplift_biogeo_ms_plots.R: slice_disparity_MLdistdf_output_50BSMs.Rdata
+- NZ_paleo: input for rpanda
 
